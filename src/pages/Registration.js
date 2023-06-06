@@ -2,14 +2,16 @@ import styles from './style.module.css'
 import {Button, Card, DatePicker, Form, Input, message} from "antd";
 import {EnvironmentOutlined, LockOutlined, MailOutlined} from "@ant-design/icons";
 import {useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
+import {registration1} from "../store/authenticationReducer";
 
 const Registration = () => {
     const dateFormat = 'YYYY-MM-DD';
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const errors = useSelector((state) => state.authentication.errors);
     const [messageApi, contextHolder] = message.useMessage();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,14 +24,30 @@ const Registration = () => {
 
     const onFinish = (values) => {
         console.log(values.birth_date.format(dateFormat));
+        console.log(values.phone_number.replace(/^(\d{1,3})(\d{3})(\d{3})(\d{2})(\d{2})$/, '+$1($2)$3-$4-$5'));
         console.log(values);
+        dispatch(registration1(values.first_name, values.last_name, values.birth_date.format(dateFormat),
+            values.phone_number.replace(/^(\d{1,3})(\d{3})(\d{3})(\d{2})(\d{2})$/, '+$1($2)$3-$4-$5'),
+            values.city, values.email, values.password1)).then(() => {
+            navigate('/', {replace: true});
+        });
     };
 
     useEffect(() => {
-    }, [dispatch, warning]);
+        if (Object.keys(errors).length > 0) {
+            console.log("Errors:", errors);
+            for (const key in errors) {
+                if (errors.hasOwnProperty(key)) {
+                    warning(errors[key]);
+                    console.log(errors[key]);
+                }
+            }
+        }
+    }, [dispatch, warning, errors]);
 
     return(
         <div className={styles.cardDeck}>
+            {contextHolder}
             <Card className={styles.regCard}>
                 <div className={styles.title}>Регистрация</div>
                 <div className={styles.authFormContainer}>
@@ -94,6 +112,7 @@ const Registration = () => {
                                 country={'rus'}
                                 onChange={phone => console.log(phone)}
                                 inputStyle={{height:"40px"}}
+                                value={/\+\d{1,3}\(\d{3}\)\d{3}[-.]\d{2}[-.]\d{2}/}
                             />
                         </Form.Item>
                         <Form.Item

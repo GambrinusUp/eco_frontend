@@ -1,14 +1,15 @@
 import styles from "./style.module.css";
-import {Button, Card, DatePicker, Form, Input, message} from "antd";
-import {EnvironmentOutlined, LockOutlined, MailOutlined} from "@ant-design/icons";
-import {useDispatch} from "react-redux";
+import {Button, Card, Form, Input, message} from "antd";
+import {LockOutlined, MailOutlined} from "@ant-design/icons";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import {login} from "../store/authenticationReducer";
 
 const Authorization = () => {
-    const dateFormat = 'YYYY-MM-DD';
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const errors = useSelector((state) => state.authentication.errors);
     const [messageApi, contextHolder] = message.useMessage();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -21,13 +22,28 @@ const Authorization = () => {
 
     const onFinish = (values) => {
         console.log(values);
+        dispatch(login(values.email, values.password)).then(() => {
+            navigate('/', {replace: true});
+        }).catch(() => {
+           console.log('Login failed');
+        });
     };
 
     useEffect(() => {
-    }, [dispatch, warning]);
+        if (Object.keys(errors).length > 0) {
+            console.log("Errors:", errors);
+            for (const key in errors) {
+                if (errors.hasOwnProperty(key)) {
+                    warning(errors[key]);
+                    console.log(errors[key]);
+                }
+            }
+        }
+    }, [dispatch, warning, errors]);
 
     return(
         <div className={styles.cardDeck}>
+            {contextHolder}
             <Card className={styles.authCard}>
                 <div className={styles.title}>Авторизация</div>
                 <div className={styles.authFormContainer}>
@@ -49,7 +65,7 @@ const Authorization = () => {
                                    style={{ height: "40px" }}/>
                         </Form.Item>
                         <Form.Item
-                            name="password1"
+                            name="password"
                             rules={[
                                 {
                                     required: true,
