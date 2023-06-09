@@ -6,9 +6,8 @@ function registration(first_name, last_name, birthDate, phone, city, email, pass
     return axios.post(API_URL + "account/register", {
         "first_name": first_name,
         "last_name": last_name,
-        "birthDate": "2023-06-04",
+        "birth_date": birthDate,
         "phone": phone,
-        "city": city,
         "email": email,
         "password": password
     })

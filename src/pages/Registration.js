@@ -1,6 +1,6 @@
 import styles from './style.module.css'
 import {Button, Card, DatePicker, Form, Input, message} from "antd";
-import {EnvironmentOutlined, LockOutlined, MailOutlined} from "@ant-design/icons";
+import {LockOutlined, MailOutlined} from "@ant-design/icons";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
@@ -23,7 +23,7 @@ const Registration = () => {
     };
 
     const onFinish = (values) => {
-        console.log(values.birth_date.format(dateFormat));
+        //console.log(values.birth_date.format(dateFormat));
         console.log(values.phone_number.replace(/^(\d{1,3})(\d{3})(\d{3})(\d{2})(\d{2})$/, '+$1($2)$3-$4-$5'));
         console.log(values);
         dispatch(registration1(values.first_name, values.last_name, values.birth_date.format(dateFormat),
@@ -114,20 +114,6 @@ const Registration = () => {
                                 inputStyle={{height:"40px"}}
                                 value={/\+\d{1,3}\(\d{3}\)\d{3}[-.]\d{2}[-.]\d{2}/}
                             />
-                        </Form.Item>
-                        <Form.Item
-                            name="city"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your City!',
-                                },
-                            ]}
-                            className={styles.regFormItem}>
-                            <Input
-                                prefix={<EnvironmentOutlined style={{ fontSize: '20px'}}/>}
-                                placeholder="City"
-                                style={{ height: "40px" }}/>
                         </Form.Item>
                         <Form.Item
                             name="email"
