@@ -46,7 +46,23 @@ function login(email, password) {
         });
 }
 
+function logout(token) {
+    return axios.post(API_URL + "account/logout", null, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => {
+            console.log(response);
+            return response.status;
+        })
+        .catch((error) => {
+            return error.response.status;
+        });
+}
+
 export const authorizeAPI = {
     registration : registration,
-    login : login
+    login : login,
+    logout : logout
 }

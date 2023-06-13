@@ -1,5 +1,4 @@
 import {authorizeAPI} from "../api/authorizeAPI";
-import {useNavigate} from "react-router-dom";
 
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 const LOGIN_FAIL = "LOGIN_FAIL";
@@ -55,6 +54,18 @@ export const registration1 = (first_name, last_name, birthDate, phone, city, ema
                 return Promise.resolve();
             }
             return Promise.reject();
+        }
+    );
+};
+
+export const logout = (token) => () => {
+    return authorizeAPI.logout(token).then (
+        (status) => {
+            localStorage.setItem("token", '');
+            if(status !== 200) {
+                return Promise.reject();
+            }
+            return Promise.resolve();
         }
     );
 };
