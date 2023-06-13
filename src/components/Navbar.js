@@ -1,7 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {logout} from "../store/authenticationReducer";
+import {logout, refreshTokenThunkCreator} from "../store/authenticationReducer";
 
 const styles = {
     navbar: {
@@ -13,7 +13,7 @@ const styles = {
         alignItems: "center",
         width: "100%",
         position: "fixed",
-        zIndex: 1
+        zIndex: 100
     },
     navbar_title: {
         textDecoration: 'none',
@@ -78,11 +78,20 @@ const Navbar = () => {
         console.log("rendering");
         let token = localStorage.getItem("token");
         if (token !== null && token !== '') {
+            let refresh_token = localStorage.getItem("refresh_token");
+            console.log(refresh_token);
+            if(refresh_token !== null && refresh_token !== '') {
+                dispatch(refreshTokenThunkCreator(refresh_token)).catch(() => {
+                    localStorage.setItem("token", '');
+                    localStorage.setItem("refresh_token", '');
+                    setIsLoggedIn(false);
+                });
+            }
             setIsLoggedIn(true);
         } else {
             setIsLoggedIn(false);
         }
-    }, [navigate]);
+    }, [dispatch]);
 
     return(
         <nav style={styles.navbar}>
@@ -99,7 +108,7 @@ const Navbar = () => {
                 )}
                 {isLoggedIn && (
                     <>
-                        <Link to="/profile" style={styles.navbar_text}>{localStorage.getItem("user")}</Link>
+                        <Link to="/profile" style={styles.navbar_text}>Профиль</Link>
                         <div style={styles.navbar_text} onClick={logoutUser}>Выход</div>
                     </>
                 )}

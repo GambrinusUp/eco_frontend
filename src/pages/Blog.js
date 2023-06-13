@@ -21,7 +21,7 @@ const Blog = () => {
         <div className={styles.cardDeck}>
             <div className={styles.blogItemDeck}>
                 <div style={{width:"80%"}}>
-                    <Card style={{margin: "auto 0", marginTop: "50px", minHeight: 200, width: "100%",
+                    <Card style={{margin: "auto 0", marginTop: "20px", minHeight: 200, width: "100%",
                         opacity: 1}}>
                         <div style={{ display: "flex", flexDirection: "row", padding: "20px" }}>
                             <div

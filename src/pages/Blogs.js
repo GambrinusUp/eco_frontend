@@ -52,7 +52,7 @@ const Blogs = () => {
                         <Input
                             type="text"
                             placeholder="Search"
-                            style={{ height: "40px", marginTop:90 }}/>
+                            style={{ height: "40px", marginTop:20 }}/>
                     </div>
                     <div style={{display:"flex", justifyContent:"center"}}>
                         <Button type={'primary'} style={{backgroundColor: "#FFFFFF",

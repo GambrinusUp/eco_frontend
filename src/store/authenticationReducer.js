@@ -31,13 +31,26 @@ export function loginActionCreator(data) {
         return {type: LOGIN_FAIL, errors: data.errors}
 }
 
+export const refreshTokenThunkCreator = (token) => (dispatch) => {
+    return authorizeAPI.refreshToken(token).then(
+        (data) => {
+            dispatch(loginActionCreator(data));
+            if(data.status === 200) {
+                //localStorage.setItem("user", email);
+                return Promise.resolve();
+            }
+            return Promise.reject();
+        }
+    );
+};
+
 export const login = (email, password) => (dispatch) => {
     return authorizeAPI.login(email, password).then(
         (data) => {
             console.log(data);
-            dispatch(loginActionCreator(data, email));
+            dispatch(loginActionCreator(data));
             if(data.status === 200) {
-                localStorage.setItem("user", email);
+                //localStorage.setItem("user", email);
                 return Promise.resolve();
             }
             return Promise.reject();
@@ -62,6 +75,7 @@ export const logout = (token) => () => {
     return authorizeAPI.logout(token).then (
         (status) => {
             localStorage.setItem("token", '');
+            localStorage.setItem("refresh_token", '');
             if(status !== 200) {
                 return Promise.reject();
             }

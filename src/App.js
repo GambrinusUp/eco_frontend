@@ -5,19 +5,27 @@ import Navbar from "./components/Navbar";
 import Authorization from "./pages/Authorization";
 import Blogs from "./pages/Blogs";
 import Blog from "./pages/Blog";
+import {Content, Header} from "antd/es/layout/layout";
+import {Layout} from "antd";
 
 function App() {
-  return (
-      <Router>
-          <Navbar />
-        <Routes>
-            <Route path='/registration' element={<Registration />} />
-            <Route path='/authorization' element={<Authorization />} />
-            <Route path='/blogs' element={<Blogs />} />
-            <Route path='/blog/:id' element={<Blog />} />
-        </Routes>
-      </Router>
-  );
+    return (
+        <Router>
+            <Layout>
+                <Header>
+                    <Navbar/>
+                </Header>
+                <Content>
+                    <Routes>
+                        <Route path='/registration' element={<Registration />} />
+                        <Route path='/authorization' element={<Authorization />} />
+                        <Route path='/blogs' element={<Blogs />} />
+                        <Route path='/blog/:id' element={<Blog />} />
+                    </Routes>
+                </Content>
+            </Layout>
+        </Router>
+    );
 }
 
 export default App;
