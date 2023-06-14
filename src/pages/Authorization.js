@@ -30,7 +30,7 @@ const Authorization = () => {
     };
 
     useEffect(() => {
-        if (Object.keys(errors).length > 0) {
+        if (errors && Object.keys(errors).length > 0) {
             console.log("Errors:", errors);
             for (const key in errors) {
                 if (errors.hasOwnProperty(key)) {

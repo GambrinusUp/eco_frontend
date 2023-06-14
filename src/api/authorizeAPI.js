@@ -34,6 +34,7 @@ function login(email, password) {
         .then((response) => {
             console.log(response);
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("refresh_token", response.data.refresh_token);
             return {status: response.status, token: response.data.token};
         })
         .catch((error) => {
@@ -46,7 +47,40 @@ function login(email, password) {
         });
 }
 
+function logout(token) {
+    return axios.post(API_URL + "account/logout", null, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => {
+            console.log(response);
+            return response.status;
+        })
+        .catch((error) => {
+            return error.response.status;
+        });
+}
+
+function refreshToken(token) {
+    return axios.get(API_URL + "account/refresh", {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    }).then((response) => {
+        console.log("refresh_success");
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("refresh_token", response.data.refresh_token);
+        return {status: response.status, token: response.data.token};
+    })
+        .catch((error) => {
+            return error.response.status;
+        });
+}
+
 export const authorizeAPI = {
     registration : registration,
-    login : login
+    login : login,
+    logout : logout,
+    refreshToken : refreshToken
 }

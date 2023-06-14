@@ -61,3 +61,18 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.blogsItemDeck {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    background-color: #A9BE8C;
+    min-height: 100vh;
+}
+
+.blogItemDeck {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    min-height: 100vh;
+}
