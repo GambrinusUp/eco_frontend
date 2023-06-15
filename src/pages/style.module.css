@@ -61,3 +61,52 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.profileFormBackground{
+    flex-direction: row;
+    display: flex;
+    color: white;
+    border-radius: 30px;
+    height: 100%;
+    margin-left: 8vw;
+    margin-top: 12vh;
+    justify-content: flex-start;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.profileForm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 60px;
+    justify-content: center;
+}
+.profileTextName{
+    color: #213803;
+    font-size: 50px;
+    margin-left: 30px;
+    margin-bottom: 50px;
+}
+.profileText{
+    color: #213803;
+    font-size: 25px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(233, 250, 210, 0.47);
+    margin-bottom: 50px;
+}
+.image{
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    height: 200px;
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 200px;
+    background-color: rgba(233, 250, 210, 0.47);
+}

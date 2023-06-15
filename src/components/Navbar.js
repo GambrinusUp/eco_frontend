@@ -49,7 +49,6 @@ const Navbar = () => {
                 <>
                     <Link to="/registration" style={styles.navbar_text}>Регистрация</Link>
                     <Link to="/authorization" style={styles.navbar_text}>Вход</Link>
-                    <!--Надо прописать логику для авторизированных -->
                     <Link to="/profile" style={styles.navbar_text}>Профиль</Link>
                 </>
             </div>
