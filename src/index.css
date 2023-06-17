@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:where(.css-dev-only-do-not-override-k7429z).ant-collapse-borderless {
+  background-color: #FFFFFF;
+}
+
+:where(.css-dev-only-do-not-override-k7429z).ant-layout-header {
+  padding: 0 0 0 0;
+  padding-inline: 0;
+  background: transparent;
+  height: 60px;
+}
