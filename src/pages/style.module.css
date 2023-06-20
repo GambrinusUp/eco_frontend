@@ -171,3 +171,17 @@
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
+.chatTitle{
+    color: #213803;
+    font-size: 50px;
+    margin-left: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+.pagination{
+    display: flex;
+    margin-left: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
+}

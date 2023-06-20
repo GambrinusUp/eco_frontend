@@ -26,8 +26,8 @@ export function threadsActionCreator(data) {
         return {type: GET_THREADS_SUCCESS, errors: data.errors}
 }
 
-export const threadsThunkCreator = (token) => (dispatch) => {
-    return threadsAPI.getAllThreads(token).then(
+export const threadsThunkCreator = (token, pageNum) => (dispatch) => {
+    return threadsAPI.getAllThreads(token, pageNum).then(
         (data) => {
             console.log(data);
             dispatch(threadsActionCreator(data));

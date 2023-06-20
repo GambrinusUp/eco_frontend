@@ -9,6 +9,7 @@ import Blog from "./pages/Blog";
 import Chats from "./pages/Chats"
 import {Content, Header} from "antd/es/layout/layout";
 import {Layout} from "antd";
+import Chat from "./pages/Chat";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                         <Route path='/blog/:id' element={<Blog />} />
                         <Route path='/profile' element={<Profile />} />
                         <Route path='/chats' element={<Chats />} />
+                        <Route path='/chat/:id' element={<Chat />} />
                     </Routes>
                 </Content>
             </Layout>
