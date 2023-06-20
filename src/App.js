@@ -6,6 +6,7 @@ import Authorization from "./pages/Authorization";
 import Profile from "./pages/Profile";
 import Blogs from "./pages/Blogs";
 import Blog from "./pages/Blog";
+import Chats from "./pages/Chats"
 import {Content, Header} from "antd/es/layout/layout";
 import {Layout} from "antd";
 
@@ -23,6 +24,7 @@ function App() {
                         <Route path='/blogs' element={<Blogs />} />
                         <Route path='/blog/:id' element={<Blog />} />
                         <Route path='/profile' element={<Profile />} />
+                        <Route path='/chats' element={<Chats />} />
                     </Routes>
                 </Content>
             </Layout>

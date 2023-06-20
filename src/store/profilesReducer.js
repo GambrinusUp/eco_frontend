@@ -1,4 +1,3 @@
-import authenticationReducer, {loginActionCreator} from "./authenticationReducer";
 import {profilesAPI} from "../api/profilesAPI";
 
 const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
