@@ -5,13 +5,23 @@ import profilesReducer from "./profilesReducer";
 import blogsReducer from "./blogsReducer";
 import postsReducer from "./postsReducer";
 import threadsReducer from "./threadsReducer";
+import commentsReducer from "./commentsReducer";
+import subReducer from "./subReducer";
+import categoriesReducer from "./categoriesReducer";
+import reactionsReducer from "./reactionsReducer";
+
 
 let reducers = combineReducers({
     authentication: authenticationReducer,
     blogs : blogsReducer,
     posts : postsReducer,
     profiles: profilesReducer,
-    threads: threadsReducer
+    threads: threadsReducer,
+    comments : commentsReducer,
+    subs : subReducer,
+    cats : categoriesReducer,
+    reactions : reactionsReducer,
+    profiles: profilesReducer
 });
 
 let store = createStore(reducers, applyMiddleware(ThunkMiddleware));

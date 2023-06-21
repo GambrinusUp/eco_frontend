@@ -59,6 +59,7 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const token = localStorage.getItem("token");
 
     const logoutUser = () => {
         let token = localStorage.getItem("token");
@@ -91,7 +92,7 @@ const Navbar = () => {
         } else {
             setIsLoggedIn(false);
         }
-    }, [dispatch]);
+    }, [dispatch, setIsLoggedIn, token]);
 
     return(
         <nav style={styles.navbar}>
