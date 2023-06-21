@@ -6,6 +6,7 @@ const POST_COMMENT_SUCCESS = "POST_COMMENT_SUCCESS"
 
 let initialState = {
     threads: [],
+    comment: [],
     comments: [],
     errors: []
 }
@@ -29,8 +30,11 @@ const threadsReducer = (state = initialState, action) => {
 }
 
 export function postCommentActionCreator(data) {
-    if (data.status === 200)
-        return {type: POST_COMMENT_SUCCESS}
+    console.log(data)
+    if (data.status === 201)
+        return {type: POST_COMMENT_SUCCESS, comment: data.data}
+    else
+        return {type: POST_COMMENT_SUCCESS, errors: data.errors}
 }
 export function threadsActionCreator(data) {
     console.log(data)
@@ -54,7 +58,7 @@ export const postCommentThunkCreator = (token, userId, threadId, textMessage) =>
         (data) => {
             console.log(data);
             dispatch(postCommentActionCreator(data));
-            if(data.status === 200){
+            if(data.status === 201){
                 return Promise.resolve();
             }
             return Promise.reject()

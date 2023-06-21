@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "../pages/style.module.css";
 
 const MessageItem = (props) => {
-    const url = 'http://d.wolf.16.fvds.ru' + props.data.user_avatar[0].photo_path;
+    const url = props.data.user_avatar[0] ? 'http://d.wolf.16.fvds.ru' + props.data.user_avatar[0].photo_path : 'https://avatars.mds.yandex.net/i?id=b2266d78cef1da20e2f0fd46d284fa030678aa4a-9137964-images-thumbs&n=13'
     return (
         <div>
             <div className={styles.theChat}>

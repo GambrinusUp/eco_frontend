@@ -16,7 +16,7 @@ function Profile(props) {
         <div className={styles.cardDeck}>
             <div className={styles.profileFormBackground}>
                 <div className={styles.profileForm}>
-                    <img src={profile.user_avatar ? url + profile.user_avatar[0].photo_path: 'https://avatars.mds.yandex.net/i?id=b2266d78cef1da20e2f0fd46d284fa030678aa4a-9137964-images-thumbs&n=13'}
+                    <img src={profile.user_avatar[0] ? url + profile.user_avatar[0].photo_path: 'https://avatars.mds.yandex.net/i?id=b2266d78cef1da20e2f0fd46d284fa030678aa4a-9137964-images-thumbs&n=13'}
                          className={styles.image} />
                     <div className={styles.profileTextName}>{profile.first_name + ' ' + profile.last_name}</div>
                 </div>

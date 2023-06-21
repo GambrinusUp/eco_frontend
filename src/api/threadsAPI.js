@@ -37,12 +37,13 @@ function getCommentsByID(token, id, pageNumber = 1){
 
 }
 function postComment(token, userId, threadId, textMessage){
+    console.log("threadId in request: ", threadId)
     return axios.post(API_URL + "comments", {
         "user_id": userId,
         "thread_id": threadId,
         "comment_text": textMessage
     }).then((response)=>{
-        return response.status
+        return {status: response.status, data: response.data};
     }).catch((error) => {
         console.log(error);
         if(error.response.status === 400) {

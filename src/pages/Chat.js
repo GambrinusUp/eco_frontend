@@ -12,6 +12,10 @@ function Chat(props) {
     const paginate = useSelector((state) => state.threads.comments)
     const [pageNum, setPageNum] = useState(1)
     const [id, setID] = useState('');
+    const [value, setValue] = useState('')
+    const [currentPage, setCurrentPage] = useState(1)
+    const [firstTime, setFirstTime] = useState(true)
+
     const parseJwt = (token) => {
         try {
             return JSON.parse(atob(token.split('.')[1])).sub;
@@ -25,8 +29,8 @@ function Chat(props) {
     }
 
     function submit(){
-        const token = localStorage.getItem("token")
-        const userId = parseJwt(token)
+        const token = localStorage.getItem("token");
+        const userId = JSON.parse(atob(token.split('.')[1])).sub;
         const textMessage = document.getElementsByTagName("input")[0].value
         console.log("token: ", token);
         console.log("userId: ", userId);
@@ -34,16 +38,20 @@ function Chat(props) {
         console.log("textMessage: ", textMessage)
         dispatch(postCommentThunkCreator(localStorage.getItem("token"), userId, id, textMessage))
         console.log(document.getElementsByTagName("input")[0].value)
+        setValue('')
+        dispatch(commentsThunkCreator(localStorage.getItem("token"), id, paginate.pageInfo.pageCount))
+    }
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     useEffect(()=>{
-        console.log("NEW DATA: ", comments);
         const path = window.location.pathname;
         const parts = path.split('/');
         const id = parts[2];
         setID(id);
         dispatch(commentsThunkCreator(localStorage.getItem("token"), id, pageNum))
-        console.log("ETO COMMENTS: ", comments)
+        //dispatch(commentsThunkCreator(localStorage.getItem("token"), id, paginate.pageInfo.pageCount))
     }, [dispatch, pageNum])
 
     if(!comments){
@@ -60,8 +68,10 @@ function Chat(props) {
                 <div className={styles.inputFormChats}>
                     <Space.Compact style={{ width: '100%' }}>
                         <Input style={{boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"}}
-                               placeholder="пишите здесь"
+                               placeholder="Напишите своё сообщение!"
                                id={"input"}
+                               value={value}
+                               onChange={event => setValue(event.target.value)}
                         />
                         <Button style={{backgroundColor: "rgba(233, 250, 210, 0.47)",
                             color: "black",
@@ -77,7 +87,7 @@ function Chat(props) {
                 )}
                 <Pagination className={styles.pagination}
                             onChange={paginationSwitch}
-                            defaultCurrent={1}
+                            defaultCurrent={pageNum}
                             total={paginate.pageInfo.pageCount * 10} />
             </div>
 
