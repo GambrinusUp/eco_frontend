@@ -3,10 +3,12 @@ import styles from "../pages/style.module.css";
 import {Link} from "react-router-dom";
 
 const CommentItem = (props) => {
+    const URL = 'http://d.wolf.16.fvds.ru/api/storage/photos/' + props.data.user_avatar.photo_path;
+
     return (
         <div>
             <div className={styles.theChat}>
-                <img src="https://sportishka.com/uploads/posts/2022-11/thumbs/1667456833_43-sportishka-com-p-kachok-s-borodoi-instagram-43.jpg"
+                <img src={URL}
                      className={styles.chatImage}/>
                 <div className={styles.commentTextAuthorName} >{props.data.user_first_name} {props.data.user_last_name}:</div>
                 <div className={styles.chatsText}>{props.data.comment_text}</div>

@@ -35,7 +35,7 @@ function Chat(props) {
     return (
         <div className={styles.cardDeck}>
             <div className={styles.chatsFormBackground}>
-                <div className={styles.chatTitle}>Беседы</div>
+                <div className={styles.chatTitle}>Беседа</div>
                 {comments && comments.map(comment =>
                     <CommentItem data={comment}/>
                 )}
