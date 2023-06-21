@@ -36,8 +36,24 @@ function getCommentsByID(token, id, pageNumber = 1){
         });
 
 }
+function postComment(token, userId, threadId, textMessage){
+    return axios.post(API_URL + "comments", {
+        "user_id": userId,
+        "thread_id": threadId,
+        "comment_text": textMessage
+    }).then((response)=>{
+        return response.status
+    }).catch((error) => {
+        console.log(error);
+        if(error.response.status === 400) {
+            return {status: error.response.status, errors: [error.response.data.message]}
+        }
+        return {status: error.response.status, errors: error.response.data.errors};
+    });
+}
 
 export const threadsAPI = {
     getAllThreads: getAllThreads,
-    getCommentsByID: getCommentsByID
+    getCommentsByID: getCommentsByID,
+    postComment: postComment
 }
