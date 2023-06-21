@@ -185,3 +185,13 @@
     justify-content: center;
     margin-bottom: 30px;
 }
+.commentTextAuthorName{
+    color: #213803;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    justify-content: flex-end;
+    white-space: nowrap;
+    display: flex;
+}

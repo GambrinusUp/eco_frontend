@@ -18,6 +18,26 @@ function getAllThreads(token, pageNumber = 1) {
         });
 }
 
+function getCommentsByID(token, id, pageNumber = 1){
+    console.log("EVENTUALLY:")
+    console.log(API_URL + "threads/" + id + '/comments' + '/?page=' + pageNumber)
+    return axios.get(API_URL + "threads/" + id + '/comments' + '/?page=' + pageNumber,{
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => {
+            console.log(response);
+            return {status: response.status, data: response.data};
+        })
+        .catch((error) => {
+            console.log(error);
+            return {status: error.response.status};
+        });
+
+}
+
 export const threadsAPI = {
-    getAllThreads: getAllThreads
+    getAllThreads: getAllThreads,
+    getCommentsByID: getCommentsByID
 }
