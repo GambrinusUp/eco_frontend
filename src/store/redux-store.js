@@ -1,6 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import ThunkMiddleware from "redux-thunk";
 import authenticationReducer from "./authenticationReducer";
+import profilesReducer from "./profilesReducer";
 import blogsReducer from "./blogsReducer";
 import postsReducer from "./postsReducer";
 import commentsReducer from "./commentsReducer";
@@ -15,7 +16,8 @@ let reducers = combineReducers({
     comments : commentsReducer,
     subs : subReducer,
     cats : categoriesReducer,
-    reactions : reactionsReducer
+    reactions : reactionsReducer,
+    profiles: profilesReducer
 });
 
 let store = createStore(reducers, applyMiddleware(ThunkMiddleware));
