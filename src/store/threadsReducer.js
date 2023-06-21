@@ -16,6 +16,7 @@ const threadsReducer = (state = initialState, action) => {
             newState.threads = action.threads
             return newState;
         case GET_COMMENTS_SUCCESS:
+            console.log("LOOK HERE DUDE: ", action.comments)
             newState.comments = action.comments
             return newState;
         default:
