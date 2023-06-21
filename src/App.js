@@ -6,9 +6,12 @@ import Authorization from "./pages/Authorization";
 import Profile from "./pages/Profile";
 import Blogs from "./pages/Blogs";
 import Blog from "./pages/Blog";
+import Chats from "./pages/Chats"
 import {Content, Header} from "antd/es/layout/layout";
 import {Layout} from "antd";
+import Chat from "./pages/Chat";
 import Post from "./pages/Post";
+
 
 function App() {
     return (
@@ -25,6 +28,8 @@ function App() {
                         <Route path='/blog/:id/:user_id' element={<Blog />} />
                         <Route path='/post/:id' element={<Post />} />
                         <Route path='/profile' element={<Profile />} />
+                        <Route path='/chats' element={<Chats />} />
+                        <Route path='/chat/:id' element={<Chat />} />
                     </Routes>
                 </Content>
             </Layout>

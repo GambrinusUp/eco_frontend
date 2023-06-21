@@ -110,6 +110,7 @@ const Navbar = () => {
                 {isLoggedIn && (
                     <>
                         <Link to="/profile" style={styles.navbar_text}>Профиль</Link>
+                        <Link to="/chats" style={styles.navbar_text}>Чаты</Link>
                         <div style={styles.navbar_text} onClick={logoutUser}>Выход</div>
                     </>
                 )}
