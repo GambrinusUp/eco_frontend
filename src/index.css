@@ -22,3 +22,12 @@ code {
   background: transparent;
   height: 60px;
 }
+
+:where(.css-dev-only-do-not-override-k7429z).ant-carousel .slick-dots li.slick-active button {
+  background: #6D8251;
+  opacity: 1;
+}
+
+:where(.css-dev-only-do-not-override-k7429z).ant-carousel .slick-dots li button {
+  background: #A9BE8C;
+}
