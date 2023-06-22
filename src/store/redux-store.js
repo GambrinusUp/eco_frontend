@@ -10,6 +10,8 @@ import subReducer from "./subReducer";
 import categoriesReducer from "./categoriesReducer";
 import reactionsReducer from "./reactionsReducer";
 import ratingsReducer from "./ratingsReducer";
+import markersReducer from "./markersReducer";
+import feedReducer from "./feedReducer";
 
 
 let reducers = combineReducers({
@@ -22,7 +24,10 @@ let reducers = combineReducers({
     subs : subReducer,
     cats : categoriesReducer,
     reactions : reactionsReducer,
-    ratings : ratingsReducer
+    ratings : ratingsReducer,
+    profiles: profilesReducer,
+    marks : markersReducer,
+    feed : feedReducer
 });
 
 let store = createStore(reducers, applyMiddleware(ThunkMiddleware));

@@ -63,19 +63,33 @@ const Post = () => {
 
     const createReaction = (reaction) => {
         let token = localStorage.getItem("token");
-        let userId = parseJwt(token);
-        dispatch(createNewReactionThunkCreator(userId, id, "", reaction, token)).then(() => {
-            dispatch(loadPostDetailsThunkCreator(id, pageNumberPost,token));
-        });
+        if(token !== '') {
+            let userId = parseJwt(token);
+
+            if (reaction === 'like' && post_details.is_dislike === true) {
+                dispatch(deleteReactionFromPostThunkCreator(userId, id));
+            }
+
+            if (reaction === 'dislike' && post_details.is_like === true) {
+                dispatch(deleteReactionFromPostThunkCreator(userId, id));
+            }
+
+
+            dispatch(createNewReactionThunkCreator(userId, id, "", reaction, token)).then(() => {
+                dispatch(loadPostDetailsThunkCreator(id, token));
+            });
+        }
     }
 
     const deleteReaction = (reaction) => {
         let token = localStorage.getItem("token");
-        let userId = parseJwt(token);
-        console.log(reaction);
-        dispatch(deleteReactionFromPostThunkCreator(userId, id)).then(() => {
-            dispatch(loadPostDetailsThunkCreator(id, pageNumberPost,token));
-        })
+        if(token !== '') {
+            let userId = parseJwt(token);
+            console.log(reaction);
+            dispatch(deleteReactionFromPostThunkCreator(userId, id)).then(() => {
+                dispatch(loadPostDetailsThunkCreator(id, pageNumberPost, token));
+            })
+        }
     }
 
     useEffect(() => {

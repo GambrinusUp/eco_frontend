@@ -13,6 +13,11 @@ import Chat from "./pages/Chat";
 import Post from "./pages/Post";
 import LeaderBord from "./pages/LeaderBord";
 import EditProfile from "./pages/EditProfile";
+import Events from "./pages/Events";
+import SubBlogs from "./pages/SubBlogs";
+import OwnerBlogs from "./pages/OwnerBlogs";
+import Feed from "./pages/Feed";
+import MapYa from "./pages/MapYa";
 
 
 function App() {
@@ -24,6 +29,7 @@ function App() {
                 </Header>
                 <Content>
                     <Routes>
+                        <Route path='/' element={<Feed />} />
                         <Route path='/registration' element={<Registration />} />
                         <Route path='/authorization' element={<Authorization />} />
                         <Route path='/blogs' element={<Blogs />} />
@@ -31,6 +37,10 @@ function App() {
                         <Route path='/post/:id' element={<Post />} />
                         <Route path='/profile' element={<Profile />} />
                         <Route path='/profile/edit' element={<EditProfile />} />
+                        <Route path='/events' element={<Events />} />
+                        <Route path='/subscriptions' element={<SubBlogs /> } />
+                        <Route path='/owner' element={<OwnerBlogs /> } />
+                        <Route path='/maps' element={<MapYa />} />
                         <Route path='/chats' element={<Chats />} />
                         <Route path='/chat/:id' element={<Chat />} />
                         <Route path='/ratings' element={<LeaderBord />} />

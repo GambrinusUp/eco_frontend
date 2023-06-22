@@ -100,7 +100,7 @@ function BlogItem(props) {
                             <Link to={`/blog/${props.blog_id}/${props.user_id}`}>
                                 <Button type={"primary"} style={{backgroundColor:"#6D8251",
                                     marginTop:10, width: "100%"}}>
-                                    Read more
+                                    Узнать больше
                                 </Button>
                             </Link>
                             {props.show_buttons && (

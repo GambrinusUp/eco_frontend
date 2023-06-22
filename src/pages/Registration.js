@@ -29,7 +29,7 @@ const Registration = () => {
         dispatch(registration1(values.first_name, values.last_name, values.birth_date.format(dateFormat),
             values.phone_number.replace(/^(\d{1,3})(\d{3})(\d{3})(\d{2})(\d{2})$/, '+$1($2)$3-$4-$5'),
             values.city, values.email, values.password1)).then(() => {
-            navigate('/', {replace: true});
+            navigate('/blogs', {replace: true});
         });
     };
 

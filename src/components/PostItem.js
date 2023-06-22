@@ -36,20 +36,33 @@ function PostItem(props) {
 
     const createReaction = (reaction) => {
         let token = localStorage.getItem("token");
-        let userId = parseJwt(token);
-        dispatch(createNewReactionThunkCreator(userId, props.id, "", reaction, token)).then(() => {
-            console.log(props.id, props.page, token);
-            dispatch(loadBlogPostsThunkCreator(props.blogId, props.page, token));
-        });
+        if(token !== '') {
+            let userId = parseJwt(token);
+
+            if (reaction === 'like' && props.is_dislike === true) {
+                dispatch(deleteReactionFromPostThunkCreator(userId, props.id));
+            }
+
+            if (reaction === 'dislike' && props.is_like === true) {
+                dispatch(deleteReactionFromPostThunkCreator(userId, props.id));
+            }
+
+            dispatch(createNewReactionThunkCreator(userId, props.id, "", reaction, token)).then(() => {
+                console.log(props.id, props.page, token);
+                dispatch(loadBlogPostsThunkCreator(props.blogId, props.page, token));
+            });
+        }
     }
 
     const deleteReaction = (reaction) => {
         let token = localStorage.getItem("token");
-        let userId = parseJwt(token);
-        console.log(reaction);
-        dispatch(deleteReactionFromPostThunkCreator(userId, props.id)).then(() => {
-            dispatch(loadBlogPostsThunkCreator(props.blogId, props.page, token));
-        })
+        if(token !== '') {
+            let userId = parseJwt(token);
+            console.log(reaction);
+            dispatch(deleteReactionFromPostThunkCreator(userId, props.id)).then(() => {
+                dispatch(loadBlogPostsThunkCreator(props.blogId, props.page, token));
+            })
+        }
     }
 
     const deletePost = () => {
