@@ -11,6 +11,11 @@ import {Content, Header} from "antd/es/layout/layout";
 import {Layout} from "antd";
 import Chat from "./pages/Chat";
 import Post from "./pages/Post";
+import Events from "./pages/Events";
+import SubBlogs from "./pages/SubBlogs";
+import OwnerBlogs from "./pages/OwnerBlogs";
+import Feed from "./pages/Feed";
+import MapYa from "./pages/MapYa";
 
 
 function App() {
@@ -22,12 +27,17 @@ function App() {
                 </Header>
                 <Content>
                     <Routes>
+                        <Route path='/' element={<Feed />} />
                         <Route path='/registration' element={<Registration />} />
                         <Route path='/authorization' element={<Authorization />} />
                         <Route path='/blogs' element={<Blogs />} />
                         <Route path='/blog/:id/:user_id' element={<Blog />} />
                         <Route path='/post/:id' element={<Post />} />
                         <Route path='/profile' element={<Profile />} />
+                        <Route path='/events' element={<Events />} />
+                        <Route path='/subscriptions' element={<SubBlogs /> } />
+                        <Route path='/owner' element={<OwnerBlogs /> } />
+                        <Route path='/maps' element={<MapYa />} />
                         <Route path='/chats' element={<Chats />} />
                         <Route path='/chat/:id' element={<Chat />} />
                     </Routes>

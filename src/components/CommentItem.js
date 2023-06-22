@@ -10,7 +10,11 @@ import {
 import {useDispatch} from "react-redux";
 import {useState} from "react";
 import {deleteCommentThunkCreator, editCommentThunkCreator} from "../store/commentsReducer";
-import {createNewReactionThunkCreator, deleteReactionFromCommThunkCreator} from "../store/reactionsReducer";
+import {
+    createNewReactionThunkCreator,
+    deleteReactionFromCommThunkCreator,
+    deleteReactionFromPostThunkCreator
+} from "../store/reactionsReducer";
 import {loadPostCommentsThunkCreator} from "../store/postsReducer";
 
 function CommentItem(props) {
@@ -56,19 +60,32 @@ function CommentItem(props) {
 
     const createReaction = (reaction) => {
         let token = localStorage.getItem("token");
-        let userId = parseJwt(token);
-        dispatch(createNewReactionThunkCreator(userId, "", props.id, reaction, token)).then(() => {
-            dispatch(loadPostCommentsThunkCreator(props.postId, props.page, token));
-        });
+        if(token !== '') {
+            let userId = parseJwt(token);
+
+            if(reaction === 'like' && props.is_dislike === true) {
+                dispatch(deleteReactionFromCommThunkCreator(userId, props.id));
+            }
+
+            if(reaction === 'dislike' && props.is_like === true) {
+                dispatch(deleteReactionFromCommThunkCreator(userId, props.id));
+            }
+
+            dispatch(createNewReactionThunkCreator(userId, "", props.id, reaction, token)).then(() => {
+                dispatch(loadPostCommentsThunkCreator(props.postId, props.page, token));
+            });
+        }
     }
 
     const deleteReaction = (reaction) => {
         console.log(reaction);
         let token = localStorage.getItem("token");
-        let userId = parseJwt(token);
-        dispatch(deleteReactionFromCommThunkCreator(userId, props.id)).then(() => {
-            dispatch(loadPostCommentsThunkCreator(props.postId, props.page, token));
-        });
+        if(token !== '') {
+            let userId = parseJwt(token);
+            dispatch(deleteReactionFromCommThunkCreator(userId, props.id)).then(() => {
+                dispatch(loadPostCommentsThunkCreator(props.postId, props.page, token));
+            });
+        }
     }
 
     const warning = (error) => {

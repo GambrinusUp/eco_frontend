@@ -101,6 +101,21 @@ function editBlog(blogId, userId, name, description, avatar, token) {
         });
 }
 
+function ownerBlogs(userId, page, token) {
+    return axios.get(API_URL + "blogs/users/" + userId + "?page=" + page, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    }).then((response => {
+        console.log(response);
+        return {status: response.status, blogs: response.data.blogs_for_owner,
+            maxPage: response.data.pageInfo.pageCount};
+    }))
+        .catch((error) => {
+            return {status: error.response.status}
+        });
+}
+
 export const blogsAPI = {
     getBlogs : getBlogs,
     getBlogById : getBlogById,
