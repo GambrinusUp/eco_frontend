@@ -32,7 +32,24 @@ function deleteSub(userId, blogId) {
         });
 }
 
+function getSubBlogs(userId, page, token) {
+    return axios.get(API_URL + "subscriptions/" + userId + "?page=" + page, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response => {
+            console.log(response);
+            return {status: response.status, blogs: response.data.subscriptions_blogs,
+                maxPage: response.data.pageInfo.pageCount};
+        }))
+        .catch((error) => {
+            return {status: error.response.status}
+        });
+}
+
 export const subAPI = {
     createNewSub : createNewSub,
-    deleteSub : deleteSub
+    deleteSub : deleteSub,
+    getSubBlogs : getSubBlogs
 }

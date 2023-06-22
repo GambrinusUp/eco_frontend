@@ -1,10 +1,12 @@
 import {blogsAPI} from "../api/blogsAPI";
 import blog from "../pages/Blog";
+import {subAPI} from "../api/subAPI";
 
 const LOAD_BLOGS = "LOAD_BLOGS"
 const LOAD_BLOG = "LOAD_BLOG"
 const LOAD_BLOG_POSTS = "LOAD_BLOG_POSTS"
 const CREATE_BLOG = "CREATE_BLOG"
+const LOAD_BLOGS_OWNER = "LOAD_BLOGS_OWNER"
 
 let initialState = {
     blogsArr : [],
@@ -30,6 +32,10 @@ const blogsReducer = (state = initialState, action) => {
             newState.blogPostsArr = action.blogPosts;
             newState.postMaxPage = action.maxPagePosts;
             return newState;
+        case LOAD_BLOGS_OWNER:
+            newState.blogsArr = action.blogs;
+            newState.maxPageNumber = action.maxPage;
+            return newState;
         case CREATE_BLOG:
             //newState.blogsArr.push(action.blog);
             return newState;
@@ -53,6 +59,25 @@ export function loadBlogPostsActionCreator(blogPosts) {
 export function createBlogActionCreator(blog) {
     return {type: CREATE_BLOG, blog: blog}
 }
+
+
+
+export function loadOwnerBlogsActionCreator(blogs) {
+    return {type: LOAD_BLOGS_OWNER, blogs : blogs.blogs, maxPage : blogs.maxPage}
+}
+
+export const loadOwnerThunkCreator = (userId, page, token) => (dispatch) => {
+    return subAPI.getSubBlogs(userId, page, token).then(
+        (data) => {
+            if (data.status === 200 || data.status === 201 || data.status === 404) {
+                dispatch(loadOwnerBlogsActionCreator(data));
+                return Promise.resolve();
+            }
+            return Promise.reject();
+        }
+    )
+}
+
 
 export const deleteBlogThunkCreator = (token, id) => (dispatch) => {
     return blogsAPI.deleteBlog(token, id).then(

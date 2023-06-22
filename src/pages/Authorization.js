@@ -23,7 +23,7 @@ const Authorization = () => {
     const onFinish = (values) => {
         console.log(values);
         dispatch(login(values.email, values.password)).then(() => {
-            navigate('/', {replace: true});
+            navigate('/blogs', {replace: true});
         }).catch(() => {
            console.log('Login failed');
         });

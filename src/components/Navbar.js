@@ -72,7 +72,7 @@ const Navbar = () => {
                     setIsLoggedIn(false);
                 });
         }
-        navigate('/', {replace: true});
+        navigate('/blogs', {replace: true});
     };
 
     useEffect(() => {
@@ -97,8 +97,9 @@ const Navbar = () => {
     return(
         <nav style={styles.navbar}>
             <div style={styles.navbar_title}>
-                <Link style={styles.navbar_title} to="/">EcoFriends</Link>
+                <Link style={styles.navbar_title} to="/blogs">EcoFriends</Link>
                 <Link to="/blogs" style={styles.navbar_text_after_title}>Блоги</Link>
+                <Link to="/events" style={styles.navbar_text}>Эвенты</Link>
             </div>
             <div>
                 {!isLoggedIn && (
@@ -109,6 +110,8 @@ const Navbar = () => {
                 )}
                 {isLoggedIn && (
                     <>
+                        <Link to="/owner" style={styles.navbar_text}>Собственные блоги</Link>
+                        <Link to="/subscriptions" style={styles.navbar_text}>Подписки</Link>
                         <Link to="/profile" style={styles.navbar_text}>Профиль</Link>
                         <div style={styles.navbar_text} onClick={logoutUser}>Выход</div>
                     </>
