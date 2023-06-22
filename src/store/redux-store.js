@@ -9,6 +9,7 @@ import commentsReducer from "./commentsReducer";
 import subReducer from "./subReducer";
 import categoriesReducer from "./categoriesReducer";
 import reactionsReducer from "./reactionsReducer";
+import ratingsReducer from "./ratingsReducer";
 
 
 let reducers = combineReducers({
@@ -21,7 +22,7 @@ let reducers = combineReducers({
     subs : subReducer,
     cats : categoriesReducer,
     reactions : reactionsReducer,
-    profiles: profilesReducer
+    ratings : ratingsReducer
 });
 
 let store = createStore(reducers, applyMiddleware(ThunkMiddleware));

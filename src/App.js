@@ -11,6 +11,7 @@ import {Content, Header} from "antd/es/layout/layout";
 import {Layout} from "antd";
 import Chat from "./pages/Chat";
 import Post from "./pages/Post";
+import LeaderBord from "./pages/LeaderBord";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                         <Route path='/profile' element={<Profile />} />
                         <Route path='/chats' element={<Chats />} />
                         <Route path='/chat/:id' element={<Chat />} />
+                        <Route path='/ratings' element={<LeaderBord />} />
                     </Routes>
                 </Content>
             </Layout>

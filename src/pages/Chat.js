@@ -57,7 +57,7 @@ function Chat(props) {
     if(!comments){
         console.log("comment - undefiend")
         return(
-            <div className={styles.chatsText}>Gaaay</div>
+            <div className={styles.chatsText} style={{fontSize:"50px"}}>Loadings...</div>
         )
     }
     console.log("comment - fiend")
