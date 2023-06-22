@@ -97,9 +97,9 @@ const Navbar = () => {
     return(
         <nav style={styles.navbar}>
             <div style={styles.navbar_title}>
-                <Link style={styles.navbar_title} to="/blogs">EcoFriends</Link>
+                <Link style={styles.navbar_title} to="/">EcoFriends</Link>
                 <Link to="/blogs" style={styles.navbar_text_after_title}>Блоги</Link>
-                <Link to="/events" style={styles.navbar_text}>Эвенты</Link>
+                <Link to="/maps" style={styles.navbar_text}>Эвенты</Link>
             </div>
             <div>
                 {!isLoggedIn && (
