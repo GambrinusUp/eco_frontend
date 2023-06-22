@@ -12,6 +12,7 @@ import {Layout} from "antd";
 import Chat from "./pages/Chat";
 import Post from "./pages/Post";
 import LeaderBord from "./pages/LeaderBord";
+import EditProfile from "./pages/EditProfile";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                         <Route path='/blog/:id/:user_id' element={<Blog />} />
                         <Route path='/post/:id' element={<Post />} />
                         <Route path='/profile' element={<Profile />} />
+                        <Route path='/profile/edit' element={<EditProfile />} />
                         <Route path='/chats' element={<Chats />} />
                         <Route path='/chat/:id' element={<Chat />} />
                         <Route path='/ratings' element={<LeaderBord />} />

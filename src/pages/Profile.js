@@ -2,12 +2,17 @@ import React, {useEffect} from "react";
 import styles from "./style.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {profile, profileThunkCreator} from "../store/profilesReducer";
+import {Button} from "antd";
 
 function Profile(props) {
     const dispatch = useDispatch()
     const profile = useSelector((state) => state.profiles.profile)
     const url = 'http://d.wolf.16.fvds.ru';
 
+
+    function editBtn(){
+        window.location.href = '/profile/edit';
+    }
     useEffect(()=>{
         dispatch(profileThunkCreator(localStorage.getItem("token")))
     }, [dispatch])
@@ -24,10 +29,16 @@ function Profile(props) {
                     <div className={styles.profileTextName}>{profile.first_name + ' ' + profile.last_name}</div>
                 </div>
                 <div className={styles.profileForm}>
-                    <div className={styles.profileText}>Город: {profile.city}</div>
+                    <div className={styles.profileText}>Город: {profile.city? profile.city : "скрыт"}</div>
                     <div className={styles.profileText}>Дата рождения: {profile.birth_date}</div>
                     <div className={styles.profileText}>Email: {profile.email}</div>
                     <div className={styles.profileText}>Телефон: {profile.phone}</div>
+                    <Button type="primary"
+                            onClick={editBtn}
+                            style={{backgroundColor: "#A9BE8C",
+                                marginLeft:"30px",
+                                marginBottom:"30px"}}
+                    >Редактировать</Button>
                 </div>
             </div>
         </div>
