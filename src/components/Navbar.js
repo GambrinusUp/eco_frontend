@@ -113,6 +113,7 @@ const Navbar = () => {
                         <Link to="/owner" style={styles.navbar_text}>Собственные блоги</Link>
                         <Link to="/subscriptions" style={styles.navbar_text}>Подписки</Link>
                         <Link to="/profile" style={styles.navbar_text}>Профиль</Link>
+                        <Link to="/chats" style={styles.navbar_text}>Чаты</Link>
                         <div style={styles.navbar_text} onClick={logoutUser}>Выход</div>
                     </>
                 )}

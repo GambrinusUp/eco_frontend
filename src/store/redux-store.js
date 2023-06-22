@@ -4,6 +4,7 @@ import authenticationReducer from "./authenticationReducer";
 import profilesReducer from "./profilesReducer";
 import blogsReducer from "./blogsReducer";
 import postsReducer from "./postsReducer";
+import threadsReducer from "./threadsReducer";
 import commentsReducer from "./commentsReducer";
 import subReducer from "./subReducer";
 import categoriesReducer from "./categoriesReducer";
@@ -11,10 +12,13 @@ import reactionsReducer from "./reactionsReducer";
 import markersReducer from "./markersReducer";
 import feedReducer from "./feedReducer";
 
+
 let reducers = combineReducers({
     authentication: authenticationReducer,
     blogs : blogsReducer,
     posts : postsReducer,
+    profiles: profilesReducer,
+    threads: threadsReducer,
     comments : commentsReducer,
     subs : subReducer,
     cats : categoriesReducer,

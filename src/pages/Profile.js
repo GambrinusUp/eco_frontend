@@ -6,6 +6,7 @@ import {profile, profileThunkCreator} from "../store/profilesReducer";
 function Profile(props) {
     const dispatch = useDispatch()
     const profile = useSelector((state) => state.profiles.profile)
+    const url = 'http://d.wolf.16.fvds.ru';
 
     useEffect(()=>{
         dispatch(profileThunkCreator(localStorage.getItem("token")))
@@ -15,7 +16,7 @@ function Profile(props) {
         <div className={styles.cardDeck}>
             <div className={styles.profileFormBackground}>
                 <div className={styles.profileForm}>
-                    <img src={'https://eternalhost.net/wp-content/uploads/2019/06/circled-user-male-skin-type-1-2.png'}
+                    <img src={profile.user_avatar[0] ? url + profile.user_avatar[0].photo_path: 'https://avatars.mds.yandex.net/i?id=b2266d78cef1da20e2f0fd46d284fa030678aa4a-9137964-images-thumbs&n=13'}
                          className={styles.image} />
                     <div className={styles.profileTextName}>{profile.first_name + ' ' + profile.last_name}</div>
                 </div>

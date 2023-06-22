@@ -6,14 +6,17 @@ import Authorization from "./pages/Authorization";
 import Profile from "./pages/Profile";
 import Blogs from "./pages/Blogs";
 import Blog from "./pages/Blog";
+import Chats from "./pages/Chats"
 import {Content, Header} from "antd/es/layout/layout";
 import {Layout} from "antd";
+import Chat from "./pages/Chat";
 import Post from "./pages/Post";
 import Events from "./pages/Events";
 import SubBlogs from "./pages/SubBlogs";
 import OwnerBlogs from "./pages/OwnerBlogs";
 import Feed from "./pages/Feed";
 import MapYa from "./pages/MapYa";
+
 
 function App() {
     return (
@@ -35,6 +38,8 @@ function App() {
                         <Route path='/subscriptions' element={<SubBlogs /> } />
                         <Route path='/owner' element={<OwnerBlogs /> } />
                         <Route path='/maps' element={<MapYa />} />
+                        <Route path='/chats' element={<Chats />} />
+                        <Route path='/chat/:id' element={<Chat />} />
                     </Routes>
                 </Content>
             </Layout>

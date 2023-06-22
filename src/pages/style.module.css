@@ -123,4 +123,80 @@
     width: 60%;
     min-height: calc(100vh - 60px);
 }
+.chatsFormBackground {
+    flex-direction: column;
+    display: flex;
+    color: white;
+    border-radius: 30px;
+    height: 100%;
+    margin: 12vh 8vw 10vh;
+    justify-content: flex-start;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 
+}
+.theChat{
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    width: 70vw;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    background-color: rgba(233, 250, 210, 0.47);
+    margin-right: 30px;
+    margin-left: 30px;
+    align-items: center;
+}
+.chatsText{
+    color: #213803;
+    font-size: 18px;
+    margin: 10px 10px 10px 10px;
+    justify-content: flex-end;
+}
+.chatsAuthorsText{
+    color: #213803;
+    font-size: 18px;
+    margin: 10px 10px 10px auto;
+    justify-content: flex-end;
+    white-space: nowrap;
+}
+.chatImage{
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    height: 64px;
+    width: 64px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.chatTitle{
+    color: #213803;
+    font-size: 50px;
+    margin-left: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+.pagination{
+    display: flex;
+    margin-left: 30px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.commentTextAuthorName{
+    color: #213803;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    justify-content: flex-end;
+    white-space: nowrap;
+    display: flex;
+}
+.inputFormChats{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
