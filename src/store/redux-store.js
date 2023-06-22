@@ -9,6 +9,7 @@ import commentsReducer from "./commentsReducer";
 import subReducer from "./subReducer";
 import categoriesReducer from "./categoriesReducer";
 import reactionsReducer from "./reactionsReducer";
+import ratingsReducer from "./ratingsReducer";
 import markersReducer from "./markersReducer";
 import feedReducer from "./feedReducer";
 
@@ -23,6 +24,7 @@ let reducers = combineReducers({
     subs : subReducer,
     cats : categoriesReducer,
     reactions : reactionsReducer,
+    ratings : ratingsReducer,
     profiles: profilesReducer,
     marks : markersReducer,
     feed : feedReducer

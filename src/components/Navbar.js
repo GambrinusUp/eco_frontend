@@ -114,6 +114,7 @@ const Navbar = () => {
                         <Link to="/subscriptions" style={styles.navbar_text}>Подписки</Link>
                         <Link to="/profile" style={styles.navbar_text}>Профиль</Link>
                         <Link to="/chats" style={styles.navbar_text}>Чаты</Link>
+                        <Link to="/ratings" style={styles.navbar_text}>Рейтинг</Link>
                         <div style={styles.navbar_text} onClick={logoutUser}>Выход</div>
                     </>
                 )}
